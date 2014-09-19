@@ -16,13 +16,13 @@ type fuse struct{
 
 type printer func() string
 
-func (f *fuse) blend(print printer) string {
+func (f *fuse) get(print printer) string {
  f.msg = print()
  return f.msg
 }
 
 func main() {
 	f := fuse{&logger{}}
-	s := f.blend(test)
+	s := f.get(test)
 	fmt.Println(f.msg)
 }
